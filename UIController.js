@@ -35,16 +35,21 @@ const updateGameInfo = () => {
     // Update the current player data to the UI
     currentPlayerElement.textContent = getCurrentPlayer();
 
-    // Check winner
-    if (!isGameActive()) {
-        const gameDecided = getGameDecided();
-        if (gameDecided === 'draw') {
-            setTimeout(() => alert('平手'), 0);
-        } else if (gameDecided === 'win') {
-            setTimeout(() => alert(`贏家是${getCurrentPlayer()}`), 100);
-        }
+    const gameDecided = getGameDecided();
+    if (gameDecided !== null) {
+        gameDecidedAlert(getGameDecided(), getWinner())
     }
+
 };
+
+const gameDecidedAlert = (gameDecided, winner) => {
+    // Check winner
+    if (gameDecided === 'draw') {
+        setTimeout(() => alert('平手'), 0);
+    } else {
+        setTimeout(() => alert(`贏家是${winner}`), 100);
+    }
+}
 
 const updateButtons = () => {
     startButton.disabled = isGameActive();
