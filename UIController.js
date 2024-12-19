@@ -94,7 +94,7 @@ const startUpdateTimeLeft = () => {
 // Add event listeners for hover effect
 const addHoverEffect = () => {
     boardElement.addEventListener('mouseover', (event) => {
-        if (event.target.classList.contains('cell') && !event.target.textContent) {
+        if (event.target.classList.contains('cell') && !event.target.textContent && isGameActive()) {
             event.target.textContent = getCurrentPlayer();
         }
     });
