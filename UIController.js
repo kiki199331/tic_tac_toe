@@ -18,7 +18,7 @@ import {
 const boardElement = document.getElementById('board');
 const currentPlayerElement = document.getElementById('currentPlayer');
 const startButton = document.getElementById('startButton');
-const restartButton = document.getElementById('restartButton');
+const resetButton = document.getElementById('resetButton');
 const playerTimeLeftElements = {
     'O': document.getElementById('timeLeftPlayer1'),
     'X': document.getElementById('timeLeftPlayer2')
@@ -54,7 +54,7 @@ const gameDecidedAlert = (gameDecided, winner) => {
 
 const updateButtons = () => {
     startButton.disabled = isGameActive();
-    restartButton.disabled = !isGameActive();
+    resetButton.disabled = !isGameActive();
 };
 
 /**
@@ -123,7 +123,7 @@ const init = () => {
         startGame();
         startUpdateTimeLeft();
     });
-    restartButton.addEventListener('click', () => {
+    resetButton.addEventListener('click', () => {
         resetGame();
         updatePlayerTimeLefts();
     });
