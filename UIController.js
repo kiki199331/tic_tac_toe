@@ -70,7 +70,7 @@ const startUpdateTimeLeft = () => {
     if (isGameActive()) {
         function updateUI() {
             // update until the time runs out or the game is over
-            if (getTimeLeftMs() > 0 && isGameActive()) {
+            if (getTimeLeftMs() >= 0 && isGameActive()) {
                 // Update the player's time left
                 updatePlayerTimeLefts(getCurrentPlayer());
                 requestAnimationFrame(updateUI);
