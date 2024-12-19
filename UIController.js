@@ -79,8 +79,10 @@ const startUpdateTimeLeft = () => {
             if (getTimeLeftMs() >= 0 ) {
                 // Update the player's time left
                 updatePlayerTimeLefts(getCurrentPlayer());
-                if(!isGameActive() && getGameDecided() === 'timeout'){
-                    gameDecidedAlert(getGameDecided(), getWinner());
+                if (!isGameActive()) {
+                    if(getGameDecided() === 'timeout'){
+                        gameDecidedAlert(getGameDecided(), getWinner());
+                    }
                     return;
                 }
                 // Request the next frame

@@ -48,7 +48,6 @@ const startGame = () => {
     gameActive = true;
     players[currentPlayer].activeTimeLeft();
     notifyRoundObservers();
-
 };
 
 const resetGame = () => {
