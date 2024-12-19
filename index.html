@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>tic-tac-toe</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="index.js"></script><!-- (defer) -->
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <div class="template-content-1">
+            <button id="startButton">開始</button>
+            <button id="restartButton">重置</button>
+        </div>
+        <div class="template-content-2">
+            <div id="board">
+                <div class="cell" data-index="0"></div>
+                <div class="cell" data-index="1"></div>
+                <div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div>
+                <div class="cell" data-index="4"></div>
+                <div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div>
+                <div class="cell" data-index="7"></div>
+                <div class="cell" data-index="8"></div>
+            </div>
+        </div>
+        <div class="template-content-3">
+            <div class="row1">
+                <span>目前玩家:</span>
+                <span id="currentPlayer"></span>
+            </div>
+            <div class="row2">
+                <div>
+                    <span>O：</span>
+                    <span id="timeLeftPlayer1">10.000</span>
+                </div>
+                <div>
+                    <span>X：</span>
+                    <span id="timeLeftPlayer2">10.000</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
