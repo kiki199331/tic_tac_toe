@@ -8,6 +8,7 @@ import {
     getCurrentPlayer,
     isGameActive,
     getGameDecided,
+    getWinner,
     getTimeLeftMs
 } from './ticTacToe.js';
 
@@ -75,9 +76,14 @@ const startUpdateTimeLeft = () => {
     if (isGameActive()) {
         function updateUI() {
             // update until the time runs out or the game is over
-            if (getTimeLeftMs() >= 0 && isGameActive()) {
+            if (getTimeLeftMs() >= 0 ) {
                 // Update the player's time left
                 updatePlayerTimeLefts(getCurrentPlayer());
+                if(!isGameActive() && getGameDecided() === 'timeout'){
+                    gameDecidedAlert(getGameDecided(), getWinner());
+                    return;
+                }
+                // Request the next frame
                 requestAnimationFrame(updateUI);
             }
         }

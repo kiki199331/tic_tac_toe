@@ -15,6 +15,7 @@ const players = {
 let board = Array(9).fill(null);
 let gameActive = false;
 let gameDecided = null;
+let winner = null;
 
 
 // Observers subjects
@@ -55,6 +56,7 @@ const resetGame = () => {
     currentPlayer = 'O';
     gameActive = false;
     gameDecided = null;
+    winner = null;
     Object.keys(players).forEach(player => players[player].resetTime(10000));
     notifyRoundObservers();
     notifyTurnObservers();
@@ -66,6 +68,7 @@ const makeMove = (index) => {
         if (checkWin(index)) {
             gameActive = false;
             gameDecided = 'win';
+            winner = currentPlayer;
         } else if (board.every(cell => cell !== null)) {
             gameActive = false;
             gameDecided = 'draw';
@@ -109,12 +112,18 @@ const checkWin = (lastMoveIndex) => {
 const getTimeLeftMs = () => {
     if (gameActive) {
         if (players[currentPlayer].getPlayerTimeLeft() <= 0) {
+            gameActive = false;
             return '0.000'
         }
         players[currentPlayer].updatePlayerTimeLeft();
     }
     const timeLeft = players[currentPlayer].getPlayerTimeLeft();
-
+    if (timeLeft === 0) {
+        gameDecided = 'timeout';
+        winner= currentPlayer === 'X' ? 'O' : 'X';
+        gameActive = false;
+        return '0.000'
+    }
     const seconds = Math.floor((timeLeft / 1000) % 60);
     const milliseconds = (timeLeft % 1000).toString().padStart(3, "0");
     return `${seconds}.${milliseconds}`
@@ -127,6 +136,7 @@ const getBoard = () => board;
 const getCurrentPlayer = () => currentPlayer;
 const isGameActive = () => gameActive;
 const getGameDecided = () => gameDecided;
+const getWinner = () => winner;
 
 export {
     subscribeRounds,
@@ -138,5 +148,6 @@ export {
     getCurrentPlayer,
     isGameActive,
     getGameDecided,
+    getWinner,
     getTimeLeftMs,
 };
