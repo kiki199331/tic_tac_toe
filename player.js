@@ -13,7 +13,7 @@ export class Player {
         return this.timeLeft;
     }
 
-    updatePlayerTimeLeft(deltaTime) {
+    updatePlayerTimeLeft() {
         const currentTime = new Date();
         const elapsedTime = currentTime - this.lastTimeLeftUpdate
         // Update the player's time left
