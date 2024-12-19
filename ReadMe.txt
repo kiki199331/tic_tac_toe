@@ -22,6 +22,11 @@ The game allows two players(named 'O', 'X') to play against each other, with a t
     cd tic-tac-toe
     ```
 
+3. Live demo:
+    ```sh
+    https://stackblitz.com/edit/stackblitz-starters-9uynzvs6?embed=1&file=index.html&hideExplorer=1&hideNavigation=1&view=preview
+    ```
+
 ## Usage
 
 1. Open `index.html` in your web browser.
